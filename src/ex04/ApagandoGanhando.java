@@ -14,7 +14,7 @@ public class ApagandoGanhando {
         preencherVetor();
     }
 
-    public void magicGuloso () {
+    public void magicApagarGuloso () {
         System.out.println("Exercicio 4 - Apagando e Ganhando");
         int j = 0;
         System.out.println("Numeros escolhidos:");

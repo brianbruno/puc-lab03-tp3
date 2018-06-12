@@ -1,3 +1,5 @@
+// Tecnica minimax
+
 package ex01;
 
 import java.util.ArrayList;
