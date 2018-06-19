@@ -42,9 +42,52 @@ public class ProblemaLadrao {
     public void magicRoubarDinamico() {
         System.out.println("Exercicio 3 - Ladrão e Mochila");
         System.out.println("Metodo Programação Dinâmica");
-    }
 
-    public void dinamica() {
+        Item[] itens = new Item[this.itens.size()];
+
+        int i = 0;
+        for (Item item : itens) {
+            itens[i] = item;
+            i++;
+        }
+        int N = itens.length-1; // number of items
+        int W = quantidadeMaxima; // maximum weight
+
+
+        // opt[n][w] = max profit of packing items 1..n with weight limit w // sol[n][w]
+        // = does opt solution to pack items 1..n with weight limit w include item n?
+        int[][] opt = new int[N + 1][W + 1];
+        boolean[][] sol = new boolean[N + 1][W + 1];
+        for (int n = 1; n <= N; n++) {
+            for (int w = 1; w <= W; w++) {
+                // don't take item n
+                int option1 = opt[n - 1][w];
+                // take item n
+                int option2 = Integer.MIN_VALUE;
+                if (itens[n].getQuilos() <= w) {
+                    option2 = itens[n].getValor() + opt[n - 1][w - itens[n].getQuilos()];
+                }
+                // select better of two options
+                opt[n][w] = Math.max(option1, option2);
+                sol[n][w] = option2 > option1;
+            }
+        }
+        // determine which items to take
+        boolean[] take = new boolean[N + 1];
+        for (int n = N, w = W; n > 0; n--) {
+            if (sol[n][w]) {
+                take[n] = true;
+                w = w - itens[n].getQuilos();
+            } else {
+                take[n] = false;
+            }
+        }
+        // print results
+        System.out.println("Item" + "\t" + "Valor" + "\t" + "Peso" + "\t" + "Pegar");
+        for (int n = 1; n <= N; n++) {
+            System.out.println(itens[n].getNome() + "\t" + itens[n].getValor() + "\t" + itens[n].getQuilos() + "\t" + take[n]);
+        }
+        System.out.println();
 
     }
 

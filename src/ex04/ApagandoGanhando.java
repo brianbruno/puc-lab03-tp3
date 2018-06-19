@@ -17,12 +17,14 @@ public class ApagandoGanhando {
     public void magicApagarGuloso () {
         System.out.println("Exercicio 4 - Apagando e Ganhando");
         int j = 0;
+        // Imprime digitos que serão apagados
         System.out.println("Numeros escolhidos:");
         for (int i = 0; i < numeros.length; i++) {
             System.out.print(this.numeros[i] + " ");
         }
         System.out.println("");
         System.out.println("Digitos a serem apagados");
+        // Seleciona os numeros
         while (j < escolhas) {
             int indexMenor = 0;
             for (int i = 0; i < numeros.length; i++) {
@@ -34,6 +36,7 @@ public class ApagandoGanhando {
             j++;
         }
 
+        // imprime o total a ser levado
         System.out.println("Total a ser levado para casa:");
         for (int i = 0; i < numeros.length; i++) {
             if (this.numeros[i] != -1)

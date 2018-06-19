@@ -7,6 +7,7 @@ public class Item implements Comparable<Item> {
     private int valor;
     private int quilos;
     private boolean jaFoiPego = false;
+    private String nome;
 
     public Item(int quantidadeMaxima) {
         this.valor = 10 + gerarCodigo(quantidadeMaxima);
@@ -16,6 +17,14 @@ public class Item implements Comparable<Item> {
     private int gerarCodigo(int quantidadeMaxima) {
         Random gerador = new Random();
         return gerador.nextInt(quantidadeMaxima);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getValor() {
